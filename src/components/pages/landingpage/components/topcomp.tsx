@@ -24,7 +24,7 @@ const Topcomp = () => {
             Pick a plan, customize your groceries, and enjoy the convenience of
             daily delivery
           </p>
-          <div className="flex items-center justify-between text-sm pl-2 bg-white gap-2">
+          {/* <div className="flex items-center justify-between text-sm pl-2 bg-white gap-2">
             <span className="text-gray-500 ">
               <BsSend />
             </span>
@@ -40,7 +40,7 @@ const Topcomp = () => {
             >
               Subscribe
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Section (Image) */}
