@@ -25,7 +25,7 @@ const Topcomp = () => {
             daily delivery.
           </p>
           <div className="flex items-center justify-between text-sm pl-2 bg-white gap-2">
-            <span className="text-gray-500 ml-4">
+            <span className="text-gray-500 ">
               <BsSend />
             </span>
             <input
