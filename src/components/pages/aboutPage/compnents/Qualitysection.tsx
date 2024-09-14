@@ -12,14 +12,14 @@ const Quality = () => {
           // height={450}
           src={aboutimg2}
           alt="Groceries"
-          className="object-contain max-w-full w-80 md:w-96  z-20   md:translate-y-0 translate-y-2"
+          className="object-contain max-w-full w-80 md:w-96  z-20   md:translate-y-0 -translate-y-1"
         />
         <Image
           width={485}
           height={550}
           src={BGForest}
           alt="Groceries"
-          className="object-contain left-0 max-w-full absolute z-10"
+          className="object-contain left-0 max-w-full absolute z-10 md:scale-100 scale-y-110"
         />
       </div>
 

@@ -43,7 +43,7 @@ const ReviewCard = () => {
           {data.map((item) => (
             <div
               key={item.id}
-              className="  md:min-w-80 my-4 min-w-[22rem] mx-8  rounded-md shadow-xl p-4 md:p-6   "
+              className="  md:min-w-80 my-4 min-w-[20rem] md:mx-8 mx-4  rounded-md shadow-xl p-4 md:p-6   "
 
             >
               <Image

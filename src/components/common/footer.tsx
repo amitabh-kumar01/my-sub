@@ -12,7 +12,7 @@ const Footer = () => {
         {/* Download Section */}
         <div className="flex flex-col space-y-4 items-start md:w-1/4 w-full col-span-2 md:col-span-1">
           <h3 className="text-sm  font-medium">Download our app</h3>
-          <div className="flex md:flex-col md:space-y-2  md:text-justify md:items-start items-center text-center  justify-between  w-full ">
+          <div className="flex md:flex-col md:space-y-2 md:gap-0 gap-4  md:text-justify md:items-start items-center text-center  justify-between  w-full ">
             <a href="#" className="w-40">
               <Image src={svgApple} alt="App Store" width={160} height={50} />
             </a>
@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
           <div className="mt-4">
             <p className="mb-2 text-xs">Follow us on social media:</p>
-            <div className="flex -ml-5 space-x-3 md:text-lg text-4xl md:justify-start justify-around px-4 md:w-auto w-dvw  ">
+            <div className="flex  md:space-x-3 md:text-lg text-3xl md:justify-start justify-around px-4 md:w-auto w-80  ">
               <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
               <FaInstagram className="hover:text-pink-500 cursor-pointer" />
               <FaPinterestP className="hover:text-red-600 cursor-pointer" />
@@ -33,14 +33,16 @@ const Footer = () => {
         </div>
 
         {/* Need Help Section */}
-        <div className="flex flex-col space-y-4 items-start md:w-1/4 w-full">
-          <h3 className="text-sm  font-medium">Need help</h3>
-          <div className="flex flex-col space-y-1">
-            <p>+88012345678910</p>
-            <p>+88012345678910</p>
-            <a href="mailto:contact@example.com" className="text-blue-500 text-xs">contact@example.com</a>
-          </div>
-        </div>
+        
+<div className="flex flex-col space-y-4 items-start  md:w-1/4 px-4 md:px-0">
+  <h3 className="text-sm font-medium">Need help</h3>
+  <div className="md:flex min-w-full gap-y-2  md:flex-col gap-x-40  md:space-y-1 grid grid-cols-2 grid-rows-2">
+    <p className=''>+88012345678910</p>
+    <p className=''>+88012345678910</p>
+    <a href="mailto:contact@example.com" className="text-blue-500 text-xs">contact@example.com</a>
+  </div>
+</div>
+
 
         {/* Customer Section */}
         <div className="md:flex hidden md:flex-col space-y-4 items-start md:w-1/4 w-full">
@@ -68,14 +70,25 @@ const Footer = () => {
 
       </div>
       {/* truck time */}
-     <div className='flex md:flex-nowrap flex-wrap  md:flex-row md:gap-0 gap-4 whitespace-nowrap px-28 md:mt-10 border-y py-4 text-sm justify-between'>
-      <div className='flex gap-2'><img src={truck.src} />Delivery from 2-4 hour</div>
-      <div className='flex gap-2'><img src={leaf.src} />Quality assurance</div>
-      <div className='flex gap-2'><img src={time.src} />24/7 delivery service</div> 
-      </div> 
+     
+<div className='grid md:mt-5 grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-28 py-4 text-xs md:text-sm justify-between border-y'>
+  <div className='flex items-center gap-2'>
+    <img src={truck.src} alt="Truck" className="w-4 h-4 md:w-auto md:h-auto" />
+    Delivery from 2-4 hours
+  </div>
+  <div className='flex items-center gap-2'>
+    <img src={leaf.src} alt="Leaf" className="w-4 h-4 md:w-auto md:h-auto" />
+    Quality assurance
+  </div>
+  <div className='flex items-center gap-2'>
+    <img src={time.src} alt="Clock" className="w-4 h-4 md:w-auto md:h-auto" />
+    24/7 delivery service
+  </div> 
+</div>
+ 
       <div className='flex justify-between md:flex-row flex-col  text-xs items-center text-gray-600 mt-8'>
         <p>Copyright © 2024 Name Web. All Rights Reserved</p>
-        <div className='flex md:gap-2 gap-7 md:mt-0 mt-4'>
+        <div className='flex md:gap-2 gap-4 md:mt-0 mt-4'>
           <Image src={svgvisa} alt="" />
           <Image src={mcsvg} alt="" />
           <Image src={avgAE} alt="" />

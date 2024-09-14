@@ -43,16 +43,16 @@ const Discover = () => {
                 <h4 className="font-semibold text-xl text-customDarkBlue">Flexibility</h4>
                 <ul className="list-disc   list-outside pl-5 text-gray-700 font-light mt-2 text-sm">
                   <li>Easily switch plans or customize your orders.</li>
-                  <li>Pause or cancel anytime with no extra charges.</li>
+                  <li>Pause or cancel anytime with no .</li>
                 </ul>
               </div>
             </div>
           </div>
           <div>
             <div className="flex items-start py-4 relative  border-customBlue border-dashed ">
-              <div className="w-3 h-3 bg-customBlue rounded-full absolute -left-1.5 -top-2 "></div>
+              <div className="w-3 h-3 bg-customBlue rounded-full absolute -left-1.5 -top-0 "></div>
               <div className="ml-4">
-                <h4 className="font-semibold text-xl text-customDarkBlue absolute -top-4">Customer Service</h4>
+                <h4 className="font-semibold text-xl text-customDarkBlue absolute -top-2">Customer Service</h4>
                 <ul className="list-disc   list-outside pl-5 text-gray-700 font-light mt-2 text-sm">
                   <li>24/7 dedicated support team ready to assist you.</li>
                   <li>Easy-to-use app and website for seamless management.</li>

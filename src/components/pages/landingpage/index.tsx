@@ -12,7 +12,7 @@ import Footer from "../../common/footer";
 import Topcomp from "./components/topcomp";
 export function LandingPage() {
   return (
-    <div className="font-poppins ">
+    <div className="font-poppins overflow-x-hidden">
       <Topcomp />
       <Midsection />
       <Brands />

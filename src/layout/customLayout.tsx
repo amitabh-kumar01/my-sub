@@ -13,7 +13,7 @@ const SimpleLayout: React.FC<SimpleLayoutProps> = ({ children }) => {
   <ClientProvider>
  <Navbar/> 
   {children}
- {/* <Footer/>    ` */}
+ <Footer/>    
   </ClientProvider>
  
   </>;

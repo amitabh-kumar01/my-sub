@@ -54,13 +54,13 @@ const TeamCard = () => {
 
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto md:w-10/12 w-64 scroll-container items-center text-center mb-10 px-2 pb-4 min-h-60"
+          className="flex gap-5 overflow-x-auto md:w-10/12 w-72 mx-4 scroll-container items-center text-center mb-10 px-2 pb-4 min-h-60"
           style={{ scrollBehavior: "smooth" }}
         >
           {Teamdata.map((item, index) => (
             <div
               key={item.id}
-              className="relative min-w-64 h-auto bg-white rounded-2xl  group shadow-md "
+              className="relative min-w-64 md:mx-0 md:p-0 mx-4 my-2 p-2 h-auto bg-white rounded-2xl  group shadow-md "
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -99,7 +99,7 @@ const TeamCard = () => {
 
         {/* Scroll Right Button */}
         <button
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-gray-200 rounded-full hover:bg-gray-400"
+          className="absolute md:block hidden right-4 top-1/2 transform -translate-y-1/2 p-2 bg-gray-200 rounded-full hover:bg-gray-400"
           onClick={() => scrollRight()}
         >
           <BsArrowRight />
