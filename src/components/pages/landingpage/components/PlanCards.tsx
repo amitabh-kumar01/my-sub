@@ -22,7 +22,7 @@ const PlanCards = () => {
   };
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return 
   }
 
   return (
