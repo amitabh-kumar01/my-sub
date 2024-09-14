@@ -22,7 +22,7 @@ const Topcomp = () => {
           </h1>
           <p className="text-lg mb-6">
             Pick a plan, customize your groceries, and enjoy the convenience of
-            daily delivery.
+            daily delivery
           </p>
           <div className="flex items-center justify-between text-sm pl-2 bg-white gap-2">
             <span className="text-gray-500 ">
