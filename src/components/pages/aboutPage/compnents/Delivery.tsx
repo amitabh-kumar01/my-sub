@@ -38,7 +38,7 @@ const Delivery = () => {
           <span className="w-4 h-4 rounded-full text-center border-2 border-customLightBlue bg-customLightBlue">
             <img src={checksvg.src} alt="" />
           </span>
-          Fusce et ex commodo, aliquam nulla efficitur.
+          Fusce et ex commodo, aliquam nulla.
         </p>
         <p className="flex items-center gap-2 text-sm font-normal text-gray-600">
           <span className="w-4 h-4 rounded-full text-center border-2 border-customLightBlue bg-customLightBlue">
