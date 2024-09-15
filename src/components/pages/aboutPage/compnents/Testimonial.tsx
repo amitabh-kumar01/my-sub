@@ -31,7 +31,6 @@ const Testimonial = () => {
         </div>
       </div>
       <div className="md:pl-10">
-        {/* Pass ref to ReviewCard */}
         <NewReviewCard ref={reviewCardRef} />
       </div>
     </div>
