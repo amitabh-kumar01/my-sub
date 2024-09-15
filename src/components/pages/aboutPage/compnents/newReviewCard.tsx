@@ -1,13 +1,18 @@
-
-"use client";
+"use client"
 import React, { useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { FaStar } from "react-icons/fa";
 import { data } from "../../../../constants/landingpage_constants/constants";
 import { vector1 } from "@/assets";
 import Image from "next/image";
 
+// Define the type for the exposed scroll methods
+type ScrollRef = {
+  scrollLeft: () => void;
+  scrollRight: () => void;
+};
+
 // Use forwardRef to expose scrollLeft and scrollRight methods to the parent
-const NewReviewCard = forwardRef((_, ref) => {
+const NewReviewCard = forwardRef<ScrollRef>((_, ref) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -28,10 +33,14 @@ const NewReviewCard = forwardRef((_, ref) => {
   function handleDotClick(index: number) {
     if (scrollRef.current) {
       const itemsToScroll = index - activeIndex;
-      if (itemsToScroll > 0) {
-        ref.current.scrollRight(itemsToScroll);
-      } else {
-        ref.current.scrollLeft(Math.abs(itemsToScroll));
+
+      // Ensure ref is an object and has a current property before calling scroll methods
+      if (ref && typeof ref === "object" && ref.current) {
+        if (itemsToScroll > 0) {
+          ref.current.scrollRight();
+        } else {
+          ref.current.scrollLeft();
+        }
       }
     }
     setActiveIndex(index);
@@ -89,5 +98,8 @@ const NewReviewCard = forwardRef((_, ref) => {
     </div>
   );
 });
+
+// Add displayName to the component
+NewReviewCard.displayName = "NewReviewCard";
 
 export default NewReviewCard;
