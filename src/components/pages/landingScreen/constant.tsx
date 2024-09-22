@@ -115,3 +115,18 @@ export const products = [
     className: "bg-customCart14",
   },
 ];
+export const colorsList = [
+ "customCart1",
+  "customCart2",
+  "customCart3",
+  "customCart4",
+  "customCart5",
+  "customCart6",
+  "customCart7",
+  "customCart8",
+  "customCart9",
+  "customCart10",
+  "customCart11",
+  "customCart12",
+  "customCart13",
+  "customCart14",];

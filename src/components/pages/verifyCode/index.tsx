@@ -15,8 +15,8 @@ export const VerifyCode = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 md:flex-row">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-4/5 md:w-8/12 flex flex-col md:flex-row">
-        <div className="w-full md:w-2/3 p-4">
+      <div className="bg-white p-8 rounded-lg shadow-lg lg:w-9/12 md:w-11/12 w-full sm:w-10/12  flex flex-col md:flex-row">
+        <div className="flex-1 w-full md:w-1/2 p-4">
           <div className=" flex h-10 items-center  gap-2 mb-2">
             <Image src={logo.src} height={50} width={20} alt="image" />
             <Image src={yourLogo.src} height={80} width={100} alt="image" />
@@ -38,7 +38,7 @@ export const VerifyCode = () => {
               </label>
               <input
                 type={passwordVisible ? "text" : "password"}
-                className="w-full px-3 py-2 mt-5 border border-customInput rounded-lg text-customInput outline-none text-base font-normal"
+                className="w-full px-3 py-2 mt-5 border border-customInput rounded text-customInput outline-none text-base font-normal"
                 placeholder="••••••••"
               />
               <div
@@ -72,7 +72,7 @@ export const VerifyCode = () => {
           </form>
         </div>
 
-        <div className="w-full  md:w-2/3 px-1 flex items-center justify-center">
+        <div className="w-full md:w-1/2 px-2 hidden md:block">
           <Image src={login.src} height={800} width={500} alt="image" />
         </div>
       </div>

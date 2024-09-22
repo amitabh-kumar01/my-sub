@@ -1,14 +1,24 @@
 
 "use client";
 import { Heroimgsvg } from "@/assets";
+import { getUserAddress } from "@/Redux/addressSlice";
+import { AppDispatch } from "@/Redux/store";
+import { fetchSubscriptions } from "@/Redux/subscriptionSlice";
+import { getUserDetail } from "@/Redux/userSlice";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsSend } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 
 
 const Topcomp = () => {
-  const [isFirst, setIsFirst] = useState<boolean>(true); // Keeping state for other future changes, if needed
-
+  const [isFirst, setIsFirst] = useState<boolean>(true); 
+  const dispatch:AppDispatch = useDispatch()
+useEffect(() => {
+    dispatch(fetchSubscriptions());
+    dispatch(getUserDetail());
+    dispatch(getUserAddress())
+  }, [dispatch]);
   return (
     <>
       <div

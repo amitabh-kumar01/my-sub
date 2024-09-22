@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -23,15 +22,15 @@ interface FormData {
   phone: string;
   pwd: string;
   cpwd: string;
-  check:string;
+  check: string;
 }
 
 export const SignUp = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const isLoading = useSelector((state : RootState) => state.user.isLoading);
+  const isLoading = useSelector((state: RootState) => state.user.isLoading);
   const router = useRouter();
-  const dispatch :AppDispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const {
     register,
@@ -226,27 +225,32 @@ export const SignUp = () => {
 
                 <div className="flex flex-col items-start  font-medium font-poppins text-sm mb-8">
                   <div className="flex flex-col items-center">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      className="mr-2"
-                      {...register("check", {
-                        required: "You must accept the privacy policy",
-                      })}
-                    />
-                    <label className="font-poppins font-md text-xs text-center flex items-center text-customRemember whitespace-nowrap">
-                      I agree to the
-                      <a href="#" className="text-customForgot font-poppins mx-1 whitespace-nowrap">
-                        Terms
-                      </a>{" "}
-                      and 
-                      <a href="#" className="text-customForgot font-poppins ml-1 ">
-                        Privacy Policy
-                      </a>
-                    </label>
- 
-                  </div>
-                                       {errors.check && (
+                    <div className="flex items-center">
+                      <input
+                        type="checkbox"
+                        className="mr-2"
+                        {...register("check", {
+                          required: "You must accept the privacy policy",
+                        })}
+                      />
+                      <label className="font-poppins font-md text-xs text-center flex items-center text-customRemember whitespace-nowrap">
+                        I agree to the
+                        <a
+                          href="#"
+                          className="text-customForgot font-poppins mx-1 whitespace-nowrap"
+                        >
+                          Terms
+                        </a>{" "}
+                        and
+                        <a
+                          href="#"
+                          className="text-customForgot font-poppins ml-1 "
+                        >
+                          Privacy Policy
+                        </a>
+                      </label>
+                    </div>
+                    {errors.check && (
                       <p className="text-red-500">{errors.check.message}</p>
                     )}
                   </div>
@@ -256,7 +260,7 @@ export const SignUp = () => {
                   type="submit"
                   className="w-full py-2 px-3  text-white bg-customBlue rounded font-poppins font-normal text-sm translate-y-3"
                 >
-                 create account 
+                  create account
                 </button>
               </form>
 
@@ -266,14 +270,14 @@ export const SignUp = () => {
                   Login
                 </Link>
               </div>
-                       <div className="flex items-center mt-2">
-                  <div className="flex-grow border-t border-gray-300"></div>
-                  <div className="poppins text-slate-400 mx-4 text-xs">
-                    or sign up with
-                  </div>
-                  <div className="flex-grow border-t border-gray-300"></div>
+              <div className="flex items-center mt-2">
+                <div className="flex-grow border-t border-gray-300"></div>
+                <div className="poppins text-slate-400 mx-4 text-xs">
+                  or sign up with
                 </div>
-              <FormIcon/>
+                <div className="flex-grow border-t border-gray-300"></div>
+              </div>
+              <FormIcon />
             </div>
             <div className="hidden w-full md:block md:w-2/6 rounded-r-lg mt-10 mr-20">
               <img

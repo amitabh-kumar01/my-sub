@@ -1,39 +1,44 @@
-import { FaRegHeart } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 import { LuRefreshCcw } from "react-icons/lu";
+import { FaRegHeart } from "react-icons/fa";
+import { IoLocationOutline, IoSettingsOutline } from "react-icons/io5";
 import { PiHandbagThin } from "react-icons/pi";
 import { TbLogout } from "react-icons/tb";
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdDashboard } from "react-icons/md";
 
 export const sidebarItems = [
   {
     icon: <MdDashboard />,
     text: "Dashboard",
-    href: "#",
+    page: "userDetail", 
   },
   {
     icon: <LuRefreshCcw />,
     text: "Order History",
-    href: "#",
+    page: "orderHistory", 
   },
   {
     icon: <FaRegHeart />,
-    text: "Wishlist",
-    href: "#",
+    text: "Profile",
+    page: "profile", 
+  },
+  {
+    icon: <IoLocationOutline />,
+    text: "Address",
+    page: "address", 
   },
   {
     icon: <PiHandbagThin />,
     text: "Shopping Cart",
-    href: "#",
+    page: "cart", 
   },
   {
     icon: <IoSettingsOutline />,
     text: "Settings",
-    href: "#",
+    page: "settings", 
   },
   {
     icon: <TbLogout />,
     text: "Log out",
-    href: "#",
+    page: "logout", 
   },
 ];

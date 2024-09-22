@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import { Poppins } from 'next/font/google';
 import { Inter } from "next/font/google";
+import NextTopLoader from 'nextjs-toploader';
 
 import "./globals.css";
 import ClientProvider from "@/Redux/ClientProvider";
@@ -29,10 +30,24 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} ${poppins.variable} ${inter.variable}`}>
 
       <body >
+      <NextTopLoader height={4}  color="#3393ff"   
+  initialPosition={0.08}
+  crawlSpeed={200}
+  
+  crawl={true}
+  easing="ease"
+  speed={200}
+  shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+  zIndex={1600}
+  showSpinner={false}
+  showAtBottom={false}/>
+
      <ClientProvider>
       
       {children}
       </ClientProvider> 
+
+
       
       </body>
     </html>

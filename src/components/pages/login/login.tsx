@@ -39,8 +39,8 @@ export const Login = () => {
       const resultAction = await dispatch(LoginUser(data));
 
       if (LoginUser.fulfilled.match(resultAction)) {
-        toast.success("Login successful!");
-        router.push("/about");
+        toast.success("Login successful!",{duration:4000});
+        router.push("/interest");
       } else {
         if (resultAction.payload) {
           toast.error(`Login failed: `);
@@ -58,8 +58,8 @@ export const Login = () => {
       {isLoading ? (
         <RingLoader color="#1792fe" />
       ) : (
-        <div className="bg-white p-8 rounded-lg shadow-lg w-3/5 md:w-8/12 flex flex-col lg:flex-row">
-          <div className="flex-1 w-full lg:w-1/2 p-4">
+        <div className="bg-white p-8 rounded-lg shadow-lg lg:w-9/12 md:w-11/12 w-full sm:w-10/12  flex flex-col md:flex-row">
+          <div className="flex-1 w-full md:w-1/2 p-4">
             <div className="flex h-8 gap-2 mb-6">
               <div className="flex h-10 items-center justify-center gap-2 mb-2">
                 <Image src={logo.src} height={50} width={20} alt="image" />
@@ -154,7 +154,7 @@ export const Login = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/2 px-2">
+          <div className="w-full md:w-1/2 px-2 hidden md:block">
             <img src={login.src} alt="Login Image" className="h-full" />
           </div>
         </div>

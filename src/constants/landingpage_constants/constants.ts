@@ -4,35 +4,35 @@ export const data = [
     id: 1,
     name: "Alex M",
     review:
-      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. It's become my go-to piece for casual outings. Highly recommend!",
+      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. Its become my go-to piece for casual outings. Highly recommend!",
     image:person1,
   },
   {
     id: 2,
     name: "Alex M",
     review:
-      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. It's become my go-to piece for casual outings. Highly recommend!",
+      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. Its become my go-to piece for casual outings. Highly recommend!",
     image:person2,
   },
   {
     id: 3,
     name: "Alex M",
     review:
-      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. It's become my go-to piece for casual outings. Highly recommend!",
+      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. Its become my go-to piece for casual outings. Highly recommend!",
     image:person3,
   },
   {
     id: 4,
     name: "Alex M",
     review:
-      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. It's become my go-to piece for casual outings. Highly recommend!",
+      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. Its become my go-to piece for casual outings. Highly recommend!",
     image:person1,
   },
   {
     id: 5,
     name: "Alex M",
     review:
-      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. It's become my go-to piece for casual outings. Highly recommend!",
+      "Absolutely love this denim jacket! The fit is perfect, and the distressed detailing gives it a rugged yet stylish look. Its become my go-to piece for casual outings. Highly recommend!",
     image:person2,
   },
 ];

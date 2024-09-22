@@ -4,30 +4,33 @@ import React, { useEffect, useState } from "react";
 import { AboutPersonsvg, logosvg } from "@/assets";
 import Image from "next/image";
 import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { nav_links as links } from "@/constants/global_constants";
 import { useDispatch, useSelector } from "react-redux";
-import { Logout } from "@/Redux/userSlice";
+import { getUserDetail, Logout } from "@/Redux/userSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { AppDispatch, RootState } from "@/Redux/store";
+import { getCookie } from "cookies-next";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [nav, setNav] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const pathname = usePathname();
   const router = useRouter();
   const dispatch: AppDispatch = useDispatch();
   const userDetail = useSelector((state: RootState) => state.user.userDetail);
 
+    const accessToken = getCookie('token');
   useEffect(() => {
-    if (pathname === "/") {
+
+    dispatch(getUserDetail());
+    if (!accessToken) {
       setNav(true);
     } else {
       setNav(false);
     }
-  }, [pathname]);
+  }, [accessToken]);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -43,6 +46,7 @@ const Navbar = () => {
 
       if (Logout.fulfilled.match(resultAction)) {
         toast.success("Logout successful!");
+        router.refresh()
         router.push("/login");
       } else {
         toast.error("Logout failed: Unknown error");
@@ -105,7 +109,7 @@ const Navbar = () => {
                 alt="User"
                 className="object-contain w-8 h-8 rounded-full"
               />
-              <p>{userDetail.length > 0 ? userDetail[0].name || "user name" : "user name"}</p>
+              <p>{userDetail.length > 0 ? userDetail[0]?.full_name || "user name" : "user name"}</p>
               <span onClick={toggleDropdown} className="cursor-pointer">
                 <FaAngleDown />
               </span>
@@ -166,7 +170,7 @@ const Navbar = () => {
               alt="User"
               className="object-contain w-8 h-8 rounded-full"
             />
-            <p>{userDetail.length > 0 ? userDetail[0].name || "user name" : "user name"}</p>
+            <p>{userDetail.length > 0 ? userDetail[0].full_name|| "user name" : "user name"}</p>
             <span onClick={toggleDropdown} className="cursor-pointer">
               <FaAngleDown />
             </span>

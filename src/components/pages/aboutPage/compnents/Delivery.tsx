@@ -6,7 +6,7 @@ import { BsArrowRight } from "react-icons/bs";
 const Delivery = () => {
   return (
     <div className="flex flex-col lg:flex-row-reverse items-center justify-between jbg-white py-16 px-6 lg:px-24 ">
-      {/* Left Section with Images */}
+      
       <div className=" ">
         <Image
           width={500}

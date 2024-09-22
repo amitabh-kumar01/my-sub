@@ -34,7 +34,7 @@ const Quality = () => {
           mi. Nulla eu eros consequat tortor tincidunt feugiat.
         </p>
 
-        {/* Dynamic Feature List */}
+        {/* Feature List */}
 
         <div className="flex md:flex-row flex-col md:gap-4 mt-10 md:w-3/5 w-full ">
           {/* Left and Right Column for Icons */}

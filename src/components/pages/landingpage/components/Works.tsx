@@ -69,7 +69,7 @@ const Works = () => {
           <p className="text-gray-800 text-sm w-10/12  text-justify">
             Select from our Basic, Standard, or Premium plans based on your
             household size.
-          </p>
+          </p> 
         </div>
       </div>
     </div>

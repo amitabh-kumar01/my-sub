@@ -1,39 +1,35 @@
+//@ts-nocheck
 "use client";
 
 import { useEffect, useState } from "react";
 import { products as productData } from "./constant";
-import { logo, selectItem, yourLogo } from "@/assets";
+import { logo, MilkImg, selectItem, yourLogo } from "@/assets";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "@/Redux/categoriesSlice";
+import { addUserInterest, fetchCategories } from "@/Redux/categoriesSlice";
 import { AppDispatch, RootState } from "@/Redux/store";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-
+import { useRouter } from "next/navigation";
+import {colorsList} from "./constant"
 export function LandingScreen() {
-  const [products, setProducts] = useState(productData);
-  const [filterProduct, setFilterProduct] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedProducts, setSelectedProducts] = useState<number[]>([]); // To store selected product IDs
 
-  const dispatch :AppDispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
+  const router = useRouter()
+  const { categories, isLoading: catLoading, error } = useSelector(
+    (state: RootState) => state.userCat
+  );
+  const handleSelect = (index: number, id: number) => {
 
-  const {
-    categories,
-    isLoading: catLoading,
-    error,
-  } = useSelector((state: RootState) => state.userCat);
+    if (selectedProducts.includes(id)) {
+      setSelectedProducts((prev) => prev.filter((productId) => productId !== id));
+    } else {
+      setSelectedProducts((prev) => [...prev, id]);
+    }
 
-  console.log(categories);
-
-  const handleSelect = (index: number) => {
-    const updatedProducts = filterProduct.map((product, i) => {
-      if (i === index) {
-        return { ...product, isSelected: !product.isSelected };
-      }
-      return product;
-    });
-    setFilterProduct(updatedProducts);
   };
 
   useEffect(() => {
@@ -45,16 +41,10 @@ export function LandingScreen() {
 
     loadCategories();
   }, [dispatch]);
-
-  useEffect(() => {
-    if (categories.length > 0) {
-      const filteredData = productData.filter((data) =>
-        categories.some((cat) => cat.name === data.name)
-      );
-      setFilterProduct(filteredData);
-    }
-  }, [categories]);
-
+function handleContinue(){
+  dispatch(addUserInterest(selectedProducts))
+  router.push("/")
+}
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="max-w-5xl mx-auto py-8 px-8 bg-white rounded-lg shadow-md">
@@ -84,30 +74,25 @@ export function LandingScreen() {
                   <Skeleton width={60} height={15} className="mt-2" />
                 </div>
               ))
-            : filterProduct?.map((product, index) => (
+            : categories?.map((product, index) => (
                 <div
                   key={index}
-                  className={`relative border p-2 rounded-lg flex flex-col items-center cursor-pointer ${product.className}`}
-                  onClick={() => handleSelect(index)}
+                  className={`relative border p-2 rounded-lg flex flex-col items-center cursor-pointer bg-${colorsList[index]}`}
+                  onClick={() => handleSelect(index, product?.id)}
                 >
-                  <img
-                    src={product.imageUrl.src}
+                    <img
+                    src={product?.image_url}
                     alt={product.name}
                     className="h-16 w-16 object-contain mb-2"
                   />
-                  <h3 className="text-customItem text-base leading-7 font-poppins">
-                    {product.name}
-                  </h3>
-                  <p className="text-customQuantity text-sm leading-4 text-nowrap">
-                    {product.quantity}
-                  </p>
-
-                  {product.isSelected && (
+                  <div>{product?.name}</div>
+                  {/* Show the image if the product is selected */}
+                  {selectedProducts.includes(product?.id) && (
                     <Image
                       src={selectItem.src}
                       height={50}
                       width={20}
-                      alt="image"
+                      alt="Selected"
                       className="absolute top-1 left-1 text-lg"
                     />
                   )}
@@ -119,7 +104,7 @@ export function LandingScreen() {
           <Link href="/">
             <button
               className="bg-customBlueCart font-medium w-56 h-12 text-white rounded-md px-4 py-2"
-              onClick={() => {}}
+              onClick={handleContinue}
             >
               Continue
             </button>

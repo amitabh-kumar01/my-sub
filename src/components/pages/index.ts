@@ -11,5 +11,6 @@ export { SignUp } from './signUp/signUp';
 export { VerifyCode } from './verifyCode';
 export { DashboardPage } from './dashBoard';
 export { Credit } from './credit';
+export { Profile } from './profile/index';
 // export { formIcon } from '../common/FormIcon';
 

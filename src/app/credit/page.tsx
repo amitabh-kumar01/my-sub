@@ -3,7 +3,7 @@ import SimpleLayout from "@/layout/customLayout"
 const page = () => {
   return (
     <SimpleLayout>
-      <Credit/>
+    <div>click</div>
     </SimpleLayout>
   )
 }

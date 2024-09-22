@@ -1,30 +1,80 @@
+//@ts-nocheck
 "use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
 import { MdRemoveRedEye } from "react-icons/md";
-import { logo, yourLogo, setPassword } from "@/assets";
 import { FaEyeSlash } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePassword } from "@/Redux/userSlice";
+import { AppDispatch, RootState } from "@/Redux/store";
+import { logo, yourLogo, setPassword } from "@/assets";
 
 export const NewPassword = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [passwordVisible2, setPasswordVisible2] = useState(false);
+  const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
+  const [newPasswordVisible, setNewPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [errors, setErrors] = useState({
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+
+  const dispatch = useDispatch<AppDispatch>();
+  const { isLoading, success, error } = useSelector(
+    (state: RootState) => state.user
+  );
+
+  const toggleOldPasswordVisibility = () => {
+    setOldPasswordVisible(!oldPasswordVisible);
   };
 
-  const togglePasswordVisibility2 = () => {
-    setPasswordVisible2(!passwordVisible2);
+  const toggleNewPasswordVisibility = () => {
+    setNewPasswordVisible(!newPasswordVisible);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible(!confirmPasswordVisible);
+  };
+
+  const validateForm = () => {
+    let formErrors = { oldPassword: "", newPassword: "", confirmPassword: "" };
+    if (!oldPassword) formErrors.oldPassword = "Old password is required.";
+    if (!newPassword) formErrors.newPassword = "New password is required.";
+    if (!confirmPassword)
+      formErrors.confirmPassword = "Confirm password is required.";
+    if (newPassword && confirmPassword && newPassword !== confirmPassword) {
+      formErrors.confirmPassword = "Passwords do not match!";
+    }
+    setErrors(formErrors);
+    return Object.values(formErrors).every((error) => error === "");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    try {
+      await dispatch(updatePassword({ oldPassword, newPassword })).unwrap();
+      alert("Password updated successfully!");
+    } catch (err) {
+      console.error("Error updating password:", err);
+    }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 md:flex-row">
-      <div className=" bg-white p-8 rounded-lg shadow-lg w-3/5 md:w-8/12 flex flex-col lg:flex-row">
-        <div className="flex-1  w-full lg:w-1/2 p-4">
-          <div className=" flex h-10 items-center  gap-2 mb-2">
-            <Image src={logo.src} height={50} width={20} alt="image" />
-            <Image src={yourLogo.src} height={80} width={100} alt="image" />
+      <div className="bg-white p-8 rounded-lg shadow-lg lg:w-9/12 md:w-11/12 w-full sm:w-10/12  flex flex-col md:flex-row">
+        <div className="flex-1 w-full md:w-1/2 p-4">
+          <div className="flex h-10 items-center gap-2 mb-2">
+            <Image src={logo.src} height={50} width={20} alt="logo" />
+            <Image src={yourLogo.src} height={80} width={100} alt="your logo" />
           </div>
           <h2 className="w-36 mb-4 font-poppins text-nowrap font-medium text-3xl">
             Set a password
@@ -33,22 +83,61 @@ export const NewPassword = () => {
             Your previous password has been reset. Please set a new password for
             your account.
           </p>
-          <form className="space-y-3">
+          <form className="space-y-3" onSubmit={handleSubmit}>
             <div className="relative">
               <label className="absolute block mt-3 bg-white ml-3 px-2 text-sm font-medium text-customInput">
-                Password
+                Old Password
               </label>
               <input
-                type={passwordVisible ? "text" : "password"}
-                className="w-full px-3 py-2 mt-5 border border-customInput rounded-lg text-customInput outline-none text-base font-normal"
+                type={oldPasswordVisible ? "text" : "password"}
+                className={`w-full px-3 py-2 mt-5 border ${
+                  errors.oldPassword ? "border-red-500" : "border-customInput"
+                } rounded text-customInput outline-none text-base font-normal`}
                 placeholder="••••••••"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
               />
               <div
-                className="absolute inset-y-0 right-3 mt-3 flex items-center cursor-pointer"
-                onClick={togglePasswordVisibility}
+                className="absolute inset-y-0 right-3 mt-4 flex items-center cursor-pointer"
+                onClick={toggleOldPasswordVisibility}
               >
-                {passwordVisible ? <MdRemoveRedEye /> : <FaEyeSlash />}
+                {oldPasswordVisible ? <MdRemoveRedEye /> : <FaEyeSlash />}
               </div>
+            </div>
+            <div>
+              {" "}
+              {errors.oldPassword && (
+                <p className="text-red-500 text-sm">{errors.oldPassword}</p>
+              )}
+            </div>
+
+            <div className="relative">
+              <label className="absolute block mt-3 bg-white ml-3 px-2 text-sm font-medium text-customInput">
+                New Password
+              </label>
+
+              <input
+                type={newPasswordVisible ? "text" : "password"}
+                className={`w-full px-3 py-2 mt-5 border  ${
+                  errors.newPassword ? "border-red-500" : "border-customInput"
+                } rounded text-customInput outline-none text-base font-normal`}
+                placeholder="••••••••"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+
+              <div
+                className="absolute inset-y-0 right-3 mt-4 flex items-center justify-center cursor-pointer"
+                onClick={toggleNewPasswordVisibility}
+              >
+                {newPasswordVisible ? <MdRemoveRedEye /> : <FaEyeSlash />}
+              </div>
+            </div>
+            <div>
+              {" "}
+              {errors.newPassword && (
+                <p className="text-red-500 text-sm">{errors.newPassword}</p>
+              )}
             </div>
 
             <div className="relative">
@@ -56,29 +145,50 @@ export const NewPassword = () => {
                 Confirm Password
               </label>
               <input
-                type={passwordVisible2 ? "text" : "password"}
-                className="w-full px-3 py-2 mt-5 border border-customInput rounded-lg text-customInput outline-none text-base font-normal"
+                type={confirmPasswordVisible ? "text" : "password"}
+                className={`w-full px-3 py-2 mt-5 border ${
+                  errors.confirmPassword
+                    ? "border-red-500"
+                    : "border-customInput"
+                } rounded text-customInput outline-none text-base font-normal`}
                 placeholder="••••••••"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <div
-                className="absolute inset-y-0 right-3 mt-3 flex items-center cursor-pointer"
-                onClick={togglePasswordVisibility2}
+                className="absolute inset-y-0 right-3 mt-4 flex items-center cursor-pointer"
+                onClick={toggleConfirmPasswordVisibility}
               >
-                {passwordVisible2 ? <MdRemoveRedEye /> : <FaEyeSlash />}
+                {confirmPasswordVisible ? <MdRemoveRedEye /> : <FaEyeSlash />}
               </div>
+            </div>
+            <div>
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+              )}
             </div>
 
             <button
               type="submit"
               className="w-full py-2 px-4 !mt-4 bg-customBlueCart text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
             >
-              Set Password
+              {isLoading ? "Updating..." : "Set Password"}
             </button>
           </form>
+
+          {error && (
+            <p className="text-red-500 mt-3">
+              Error updating password: {error}
+            </p>
+          )}
         </div>
 
-        <div className="w-full lg:w-1/2 px-2">
-          <img src={setPassword.src} alt="Login Image" className="h-full" />
+        <div className="w-full md:w-1/2 px-2 hidden md:block">
+          <img
+            src={setPassword.src}
+            alt="Set Password Image"
+            className="h-full"
+          />
         </div>
       </div>
     </div>

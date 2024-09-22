@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSubscriptions } from "@/Redux/subscriptionSlice";
+import {
+  fetchSubscriptions,
+  getSubscriptionDetails,
+} from "@/Redux/subscriptionSlice";
 import { AppDispatch, RootState } from "@/Redux/store";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { getCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 const PlanCards = () => {
-  const dispatch :AppDispatch = useDispatch();
+  const dispatch :AppDispatch= useDispatch();
+  const router = useRouter()
   const { subscriptions, isLoading, error } = useSelector(
     (state: RootState) => state.subscriptions
   );
 
-  const [selectedPlan, setSelectedPlan] = useState<number | null>(1);
+  const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
 
   useEffect(() => {
     dispatch(fetchSubscriptions());
@@ -20,13 +26,21 @@ const PlanCards = () => {
   const handlePlanSelect = (index: number) => {
     setSelectedPlan(index);
   };
+  const buySubscritption=  (subscriptionId: number) => {
+    const accessToken = getCookie('token');
+    
+    if(accessToken) router.push(`/credit/${subscriptionId}`)
+    else router.push("/login")
+  };
+
+
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   return (
-    <div className="flex md:flex-row flex-col gap-4 mt-20 md:px-20 px-6  justify-around font-manrope">
+    <div className="flex md:flex-row flex-col gap-4 mt-20 md:px-20 px-6 justify-around font-manrope">
       {isLoading
         ? [...Array(3)].map((_, index) => (
             <div
@@ -51,12 +65,12 @@ const PlanCards = () => {
                 onClick={() => handlePlanSelect(index)}
                 className={`flex flex-col md:w-80 w-auto p-4 rounded-lg border shadow-lg cursor-pointer transition-all duration-300 ${
                   isSelected
-                    ? "bg-customBlue text-white border-white "
+                    ? "bg-customBlue text-white border-white"
                     : "bg-white text-customBlack border"
                 }`}
               >
                 <div className="flex justify-between font-bold">
-                  <p>{plan.title}</p>
+                  <p>{plan.name}</p>
                   <p
                     className={`font-bold ${
                       isSelected ? "text-white" : "text-customBlue"
@@ -80,10 +94,11 @@ const PlanCards = () => {
                   <span className="text-base">/{plan.duration}</span>
                 </div>
                 <button
-                  className={`border rounded mt-4 p-2 leading-5 text-sm font-semibold text-customBlue hover:bg-customBlue hover:text-white ${
+                onClick={()=> buySubscritption( plan.id)}
+                  className={`border rounded mt-4 p-2 leading-5 text-sm font-semibold text-customBlue hover:bg-customBlue ${
                     isSelected
-                      ? "border-white text-white   hover:bg-white hover:text-customBlue"
-                      : "border-customBlue text-customBlue"
+                      ? "border-white text-white hover:bg-white hover:text-customBlue"
+                      : "border-customBlue text-customBlue hover:text-white"
                   }`}
                 >
                   Get Started Now
@@ -98,7 +113,7 @@ const PlanCards = () => {
                         <p
                           className={`${
                             isSelected ? "text-white" : "text-gray-500"
-                          } text-sm font-medium  leading-10 `}
+                          } text-sm font-medium  leading-10`}
                         >
                           {item.weight}
                         </p>

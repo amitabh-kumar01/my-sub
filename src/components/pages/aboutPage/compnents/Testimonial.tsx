@@ -1,12 +1,10 @@
 "use client"
 import React from "react";
-
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import NewReviewCard from "./newReviewCard";
 
 const Testimonial = () => {
   const reviewCardRef = React.useRef<{ scrollLeft: () => void; scrollRight: () => void }>(null);
-
   return (
     <div className="bg-gray-100 pb-10">
       <div className="flex md:justify-between md:px-20 justify-around ">

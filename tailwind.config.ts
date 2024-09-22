@@ -1,3 +1,4 @@
+import { BiCustomize } from "react-icons/bi";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -42,18 +43,20 @@ const config: Config = {
         customItem: "#253D4E",
         customWhite: "#FFFFFF",
         customGray: "#999999",
-        customText:" #1A1A1A",
+        customText: " #1A1A1A",
       },
       right: {
         cs: "25rem",
       },
       fontSize: {
         xxs: "0.625rem",
-        nl: "1.125rem", 
+        nl: "1.125rem",
         cxl: "2.25rem",
         huge: "2.625rem",
       },
-      // fontSize: {},
+      padding: {
+        5: "0.3125rem",
+      },
     },
   },
   plugins: [],

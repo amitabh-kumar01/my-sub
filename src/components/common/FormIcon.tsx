@@ -17,23 +17,23 @@ export const FormIcon = () => {
       }
     } catch (error) {
       console.error("An error occurred during sign-in:", error);
-    } 
+    }
   };
 
   return (
-    <div className="mt-4 flex space-x-3 justify-center gap-1">
-      <div className="border border-customForgot bg-slate-100 hover:opacity-85 hover:scale-105 flex justify-center items-center w-28 h-9 rounded-sm">
+    <div className="mt-4 flex justify-center w-full gap-4">
+      <div className="border border-customForgot bg-slate-100 hover:opacity-85 hover:scale-105 flex justify-center items-center flex-grow h-9 rounded-sm">
         <Image src={facebook.src} height={20} width={20} alt="Facebook Icon" />
       </div>
 
       <div
-        className="border border-customForgot bg-slate-100 hover:opacity-85 hover:scale-105 w-28 flex justify-center items-center h-9 rounded-sm cursor-pointer"
-        onClick={handleGoogleSignIn} 
+        className="border border-customForgot bg-slate-100 hover:opacity-85 hover:scale-105 flex-grow flex justify-center items-center h-9 rounded-sm cursor-pointer"
+        onClick={handleGoogleSignIn}
       >
         <Image src={google.src} height={20} width={20} alt="Google Icon" />
       </div>
-      
-      <div className="border border-customForgot bg-slate-100 hover:opacity-85 w-28 hover:scale-105 h-9 flex justify-center items-center rounded-sm">
+
+      <div className="border border-customForgot bg-slate-100 hover:opacity-85 hover:scale-105 flex-grow h-9 flex justify-center items-center rounded-sm">
         <Image src={apple.src} height={20} width={20} alt="Apple Icon" />
       </div>
     </div>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { FaFacebookF, FaInstagram, FaPinterestP, FaYoutube, FaTwitter } from 'react-icons/fa';
 import Image from 'next/image';
-import {   truck, leaf, time,  svgvisa, mcsvg, avgAE, svgBird, svgCircle, svgRocket, svgPlaystore, svgApple } from '@/assets'; // Ensure these paths are correct
+import {   truck, leaf, time,  svgvisa, mcsvg, avgAE, svgBird, svgCircle, svgRocket, svgPlaystore, svgApple } from '@/assets'; 
 
 const Footer = () => {
   return (

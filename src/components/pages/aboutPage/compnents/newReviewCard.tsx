@@ -1,3 +1,4 @@
+
 "use client"
 import React, { useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { FaStar } from "react-icons/fa";
@@ -5,18 +6,15 @@ import { data } from "../../../../constants/landingpage_constants/constants";
 import { vector1 } from "@/assets";
 import Image from "next/image";
 
-// Define the type for the exposed scroll methods
 type ScrollRef = {
   scrollLeft: () => void;
   scrollRight: () => void;
 };
 
-// Use forwardRef to expose scrollLeft and scrollRight methods to the parent
 const NewReviewCard = forwardRef<ScrollRef>((_, ref) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Expose scrollLeft and scrollRight methods to the parent component via ref
   useImperativeHandle(ref, () => ({
     scrollLeft() {
       if (scrollRef.current) {
@@ -34,7 +32,6 @@ const NewReviewCard = forwardRef<ScrollRef>((_, ref) => {
     if (scrollRef.current) {
       const itemsToScroll = index - activeIndex;
 
-      // Ensure ref is an object and has a current property before calling scroll methods
       if (ref && typeof ref === "object" && ref.current) {
         if (itemsToScroll > 0) {
           ref.current.scrollRight();
@@ -84,6 +81,7 @@ const NewReviewCard = forwardRef<ScrollRef>((_, ref) => {
         </div>
       </div>
 
+      
       <div className="flex space-x-2 mt-6 items-center text-center justify-center">
         {data.map((_, index) => (
           <button
@@ -99,7 +97,6 @@ const NewReviewCard = forwardRef<ScrollRef>((_, ref) => {
   );
 });
 
-// Add displayName to the component
 NewReviewCard.displayName = "NewReviewCard";
 
 export default NewReviewCard;
