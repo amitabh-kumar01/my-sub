@@ -31,7 +31,7 @@ const LeftComp: React.FC<LeftCompProps> = ({ path }) => {
   const productDetail = Array.isArray(orderDetail?.userInterest) ? orderDetail.userInterest : [];
 
   return (
-    <div className="md:min-w-full w-96 ">
+    <div className="md:min-w-full w--80 ">
       <div className="md:w-11/12 p-4 md:py-6 md:px-8 bg-white">
         <h2 className="md:text-3xl text-xl font-bold text-customDarkBlue px-2 md:-mt-8 md:-translate-y-2 md:mb-4">
           Subscription Details
