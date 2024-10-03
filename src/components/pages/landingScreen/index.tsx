@@ -1,4 +1,5 @@
 //@ts-nocheck
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -7,7 +8,7 @@ import { logo, MilkImg, selectItem, yourLogo } from "@/assets";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { addUserInterest, fetchCategories } from "@/Redux/categoriesSlice";
+import { addUserInterest, fetchCategories } from "@/Redux/slices/categoriesSlice";
 import { AppDispatch, RootState } from "@/Redux/store";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { MdRemoveRedEye } from "react-icons/md";
 import { FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePassword } from "@/Redux/userSlice";
+import { updatePassword } from "@/Redux/slices/userSlice";
 import { AppDispatch, RootState } from "@/Redux/store";
 import { logo, yourLogo, setPassword } from "@/assets";
 

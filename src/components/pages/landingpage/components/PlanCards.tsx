@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchSubscriptions,
   getSubscriptionDetails,
-} from "@/Redux/subscriptionSlice";
+} from "@/Redux/slices/subscriptionSlice";
 import { AppDispatch, RootState } from "@/Redux/store";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";

@@ -1,5 +1,4 @@
 //@ts-nocheck
-
 "use client";
 import React, { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
@@ -9,7 +8,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { AppDispatch } from "@/Redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-import { addUserNewAddress,  defaultAddress, editAddress,  getUserAddress,  removeUserAddress,} from "@/Redux/addressSlice";
+import { addUserNewAddress,  defaultAddress, editAddress,  getUserAddress,  removeUserAddress,} from "@/Redux/slices/addressSlice";
 import { Address, FormData } from "./types";
 import AddressModal from "./AddressMobal";
 import { useDetectClickOutside } from 'react-detect-click-outside';
@@ -60,7 +59,7 @@ const AddressPage: React.FC = () => {
   useEffect(() => {
     
   
-if(addressDetail.length > 0){
+if(addressDetail?.length > 0){
   setLoading(false)
 }else{
       setLoading(true);
@@ -76,7 +75,7 @@ if(addressDetail.length > 0){
 
   useEffect(() => {
     const formattedAddresses: Address[] =
-      addressDetail[0]?.data.map((item: any) => ({
+      addressDetail?.map((item: any) => ({
         id: item.id,
         name: item.full_name,
         address: item.address,
@@ -185,7 +184,7 @@ setTimeout(() => {
 
   return (
     <div className="px-8">
-      <h1 className="md:text-3xl text-xl font-bold mb-6 text-customDarkBlue">My Address</h1>
+      <h1 className="md:text-3xl text-xl font-bold mb-3 text-customDarkBlue">My Address</h1>
 
       {/* Scrollable Address List */}
       <div className="overflow-y-auto max-h-96 min-h-96 custom-scrollbar scroll-container">
@@ -199,7 +198,7 @@ setTimeout(() => {
           (addresses.map((address) => (
             <div
               key={address.id}
-              className={`p-6 border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow relative ${
+              className={`p-6 border border-customBlue rounded-lg shadow-lg hover:shadow-xl transition-shadow relative ${
                 address.isDefault ? "border-blue-500 bg-blue-50" : "bg-white"
               }`}
             >

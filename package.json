@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@next/font": "^14.2.7",
+    "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
+    "chart.js": "^4.4.4",
     "cookie-store": "^3.0.0",
     "cookies-next": "^4.2.1",
     "dotenv": "^16.4.5",
@@ -20,6 +23,8 @@
     "next-auth": "^4.24.7",
     "nextjs-toploader": "^3.6.15",
     "react": "^18",
+    "react-animated-cursor": "^2.11.2",
+    "react-chartjs-2": "^5.2.0",
     "react-detect-click-outside": "^1.1.7",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",

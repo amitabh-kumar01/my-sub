@@ -88,12 +88,14 @@ import MapImage from "./Map Image svg.svg";
 import emailsvg from "./Emailsvg.svg";
 import callsvg from "./callsvg.svg";
 import selectItem from "./greentik.svg";
-import Carouselimg from "./Carousel2.png";
 import latestPlaystore from "./pngwing.com.png";
+
+import DeliveryBoy from "./Deliveryboy.svg";
+
 // import profile from "./defaultProfile.avif";
 export {
+DeliveryBoy ,
   latestPlaystore,
-  Carouselimg,
   selectItem,
   AboutPersonsvg,
   dianne,

@@ -4,10 +4,10 @@ import Form from './Form';
 
 const Formsection = () => {
   return (
-    <div className='flex w-full md:w-3/4   md:p-8  items-center mt-10 justify-center cursor-pointer' >
+    <div className='flex w-full md:w-3/4   md:p-8  items-center mt-16 justify-center cursor-pointer' >
     <div className="flex flex-col  md:flex-row bg-white  rounded-lg md:p-8 p-2 w-11/12 md:gap- gap-20">
       {/* Left Section - Contact Information */}
-      <div className="md:w-1/3 p-12 bg-gray-50 rounded-lg  shadow-2xl ">
+      <div className="md:w-1/3 p-12 bg-gray-50 rounded-lg border border-customBlue  shadow-2xl ">
         <div className="flex flex-col items-center mb-6 text-center">
           <span className="flex items-center justify-center w-12 h-12 ">
                   <img

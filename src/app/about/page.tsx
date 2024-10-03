@@ -3,7 +3,6 @@ import SimpleLayout from "@/layout/customLayout"
 const page = () => {
   return (
     <SimpleLayout>
-
     <AboutPage/>
     </SimpleLayout>
   )

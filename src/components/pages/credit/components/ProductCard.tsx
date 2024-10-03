@@ -40,7 +40,7 @@ export const Products : React.FC<ProductsProps> = ({ productDetail }) => {
         {productDetail?.map((product, index) => (
           <div
             key={product.id}
-            className="flex justify-between w-full shadow p-2 rounded-xl text-xs text-gray-500 items-center gap-2"
+            className="flex border border-customBlue shadow-md shadow-blue-200 justify-between w-full  p-2 rounded-lg text-xs text-gray-500 items-center gap-2"
           >
             <div className="flex gap-4 items-center">
               {/* Use placeholder image if product_image is empty */}

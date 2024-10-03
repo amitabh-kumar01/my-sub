@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { Dashboardcomp } from "./component/dashboard";
 // import { Sidebar } from "./component/sidebar";
 import Topcomp from "./component/Topcomp";
-import { getUserAddress } from "@/Redux/addressSlice";
-import { getUserDetail } from "@/Redux/userSlice";
+import { getUserAddress } from "@/Redux/slices/addressSlice";
+import { getUserDetail } from "@/Redux/slices/userSlice";
 import { useEffect } from "react";
 
 export const DashboardPage = () => {

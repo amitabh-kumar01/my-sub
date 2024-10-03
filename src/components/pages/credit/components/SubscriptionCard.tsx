@@ -58,7 +58,7 @@ export const SubscriptionCard = () => {
 
 
   return (
-    <div className="border border-gray-200 rounded-lg md:p-4 px-1 py-4 shadow-sm">
+    <div className="border border-customBlue rounded-lg md:p-4 px-1 py-4 shadow-sm">
             {/* Subscription and Duration */}
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-800">
               <div className="flex justify-between items-center">

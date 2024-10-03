@@ -6,7 +6,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { MdRemoveRedEye } from "react-icons/md";
 import { FormIcon } from "@/components/common/FormIcon";
 import Link from "next/link";
-import { LoginUser } from "@/Redux/userSlice";
+import { LoginUser } from "@/Redux/slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
@@ -20,9 +20,9 @@ interface FormData {
 
 export const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const dispatch :AppDispatch= useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const router = useRouter();
-  const isLoading = useSelector((state :RootState) => state.user.isLoading);
+  const isLoading = useSelector((state: RootState) => state.user.isLoading);
 
   const {
     register,

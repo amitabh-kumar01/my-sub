@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client"
 
 import React, { useEffect, useState } from "react";
@@ -8,10 +9,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { nav_links as links } from "@/constants/global_constants";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetail, Logout } from "@/Redux/userSlice";
+import { getUserDetail, Logout } from "@/Redux/slices/userSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { AppDispatch, RootState } from "@/Redux/store";
 import { getCookie } from "cookies-next";
+import ScrollProgressBar from "./ScrollProgress";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,8 +106,8 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="relative flex items-center space-x-2 whitespace-nowrap">
-              <Image
-                src={AboutPersonsvg}
+              <img
+              src={ userDetail[0]?.profile_image||AboutPersonsvg }
                 alt="User"
                 className="object-contain w-8 h-8 rounded-full"
               />
@@ -165,8 +167,8 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center justify-aroung mt-2 space-x-5 whitespace-nowrap text-sm font-normal">
-            <Image
-              src={AboutPersonsvg}
+            <img
+              src={ userDetail[0]?.profile_image||AboutPersonsvg }
               alt="User"
               className="object-contain w-8 h-8 rounded-full"
             />
@@ -188,6 +190,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      <ScrollProgressBar/>
     </nav>
   );
 };

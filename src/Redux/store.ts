@@ -1,11 +1,11 @@
 
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import userReducer from "./userSlice";
-import retrievecategory from "./categoriesSlice";
-import subscriptionReducer from "./subscriptionSlice";
-import addressReducer from "./addressSlice";
-import profileReducer from "./userImageSlice";
+import userReducer from "./slices/userSlice";
+import retrievecategory from "./slices/categoriesSlice";
+import subscriptionReducer from "./slices/subscriptionSlice";
+import addressReducer from "./slices/addressSlice";
+import profileReducer from "./slices/userImageSlice";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 const rootReducer = combineReducers({
